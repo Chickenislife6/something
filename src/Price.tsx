@@ -5,12 +5,11 @@ import contract from "@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3
 import { useState } from "react";
 import Web3 from "web3";
 import { useParams } from "react-router";
-import { ReturnToHome } from "./HomeButton";
 
 const provider: ethers.providers.JsonRpcProvider = new ethers.providers.JsonRpcProvider( 
     'https://mainnet.infura.io/v3/4a7923e622734ab4bdb1c6821a201262'
 );
-const poolAddress = "0x83abecf7204d5afc1bea5df734f085f2535a9976";
+//const poolAddress = "0x83abecf7204d5afc1bea5df734f085f2535a9976";
 
 interface Immutables {  
     factory: string;
@@ -102,7 +101,6 @@ const PriceDisplay: React.FC<props> = (props) => {
             <h1>please enter a valid eth contract</h1>
             }  
 
-            <ReturnToHome/>
     </div>
 }
 

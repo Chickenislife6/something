@@ -17,7 +17,7 @@ const Home: React.FC<props> = (props) => {
         <button onClick={() => {setRedirect(!Redirect)}}>go to youtube</button>
         <input placeholder="enter pool contract address" onChange={(e) => {setPoolContract(e.target.value)}} value={PoolContract}></input>
 
-        { Redirect && <meta http-equiv = "refresh" content = "0; url = https://www.youtube.com" /> }
+        { Redirect && <meta http-equiv = "refresh" content = "0; url = https://www.youtube.com/watch?v=dQw4w9WgXcQ" /> }
     </div>
 }
 export {Home}
