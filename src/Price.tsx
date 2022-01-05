@@ -1,10 +1,8 @@
 import { ethers } from "ethers";
 import { Pool } from "@uniswap/v3-sdk";
-import { Price, Token } from "@uniswap/sdk-core";
+import { Token } from "@uniswap/sdk-core";
 import contract from "@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json";
 import { useState } from "react";
-import { isHexString } from "ethers/lib/utils";
-import { Web3Provider } from "@ethersproject/providers";
 import Web3 from "web3";
 import { useParams } from "react-router";
 import { ReturnToHome } from "./HomeButton";
@@ -35,7 +33,7 @@ interface State {
 }
 
 function createPoolContract(poolAddress:string | undefined) {
-    if (poolAddress == undefined) {
+    if (poolAddress === undefined) {
         return undefined
     }
     if (Web3.utils.isAddress(poolAddress)) {
