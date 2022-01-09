@@ -12,12 +12,14 @@ const Home: React.FC<props> = (props) => {
 
     return <div>
         <Link to={"pool/"+ (PoolContract !== '' ? PoolContract: '0x83abecf7204d5afc1bea5df734f085f2535a9976')}>
-            <button>show website</button>
+            <button>get pool information</button>
         </Link>
-        <button onClick={() => {setRedirect(!Redirect)}}>go to youtube</button>
         <input placeholder="enter pool contract address" onChange={(e) => {setPoolContract(e.target.value)}} value={PoolContract}></input>
 
+        <button onClick={() => {setRedirect(!Redirect)}}>go to youtube</button>
         { Redirect && <meta http-equiv = "refresh" content = "0; url = https://www.youtube.com/watch?v=dQw4w9WgXcQ" /> }
+
+
     </div>
 }
 export {Home}

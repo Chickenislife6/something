@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import { Pool } from "@uniswap/v3-sdk";
 import { Token } from "@uniswap/sdk-core";
 import contract from "@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json";
-import { useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Web3 from "web3";
 import { useParams } from "react-router";
 
@@ -83,25 +83,34 @@ interface props {
 }
 const PriceDisplay: React.FC<props> = (props) => {
     const { id } = useParams<string>();
-    const [Value, setValue] = useState<number>(0)
-    const poolContract = createPoolContract(id)
-    return <div>
-        
+    const [Value, setValue] = useState<number>(0);
+    const [_, ForceRender] = useReducer(x => x+1, 0);
+    let poolContract = createPoolContract(id);
 
-            {
-            poolContract instanceof ethers.Contract ? 
-            <div>
-                <button className="btn" onClick={async () => {setValue(await main(poolContract).then((value) => value))}}>
-                click to get price of the pool contract: {id}
-                </button>
-                <h1>token0 to token1: {Value}</h1>
-                <h1>token1 to token0: {1/Value}</h1>
-            </div>
-            :
-            <h1>please enter a valid eth contract</h1>
-            }  
+    const PriceFetch = async (poolContract: ethers.Contract | undefined) => {
+        if (poolContract instanceof ethers.Contract) {
+            setValue(await main(poolContract).then((value) => value))
+        }
+    };
 
+    useEffect(()  => {
+        PriceFetch(poolContract)
+    });
+
+    if (poolContract instanceof ethers.Contract) {
+        return <div>
+        <button className="btn" onClick={() => ForceRender()}>
+        click to get price of the pool contract: {id}
+        </button>
+        <h1>token0 to token1: {Value}</h1>
+        <h1>token1 to token0: {1/Value}</h1>
     </div>
-}
+    } else {
+        return <div>
+            <h1>please enter a valid pool contract</h1>
+        </div>
+    }
+    }
+    
 
 export {PriceDisplay}
