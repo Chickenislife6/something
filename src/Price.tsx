@@ -84,6 +84,7 @@ interface props {
 const PriceDisplay: React.FC<props> = (props) => {
     const { id } = useParams<string>();
     const [Value, setValue] = useState<number>(0);
+    // eslint-disable-next-line
     const [_, ForceRender] = useReducer(x => x+1, 0);
     let poolContract = createPoolContract(id);
 

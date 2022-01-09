@@ -24,7 +24,7 @@ const Blog = () => {
     const skip = typeof(index) == 'string' ? parseInt(index) : 0;
     const take = typeof(count) == 'string' ? parseInt(count) : 0;
 
-    const {loading, data} = useQuery<feed> (
+    const {data} = useQuery<feed> (
         FeedQuery,
         {variables: {skip, take, orderBy: {updatedAt: Sort.sort}}}
     );
@@ -39,7 +39,7 @@ const Blog = () => {
             </Dropdown.Menu>
             </Dropdown>
             
-    {loading ? (
+    {!data ? (
       <p>Loading ...</p>
     ) : (
       <table width='100' className='table fixed'>
@@ -53,7 +53,7 @@ const Blog = () => {
         </thead>
         <tbody>
             {console.log(data)}
-          {data && data.feed.map((e) => {
+          {data.feed.map((e) => {
               return (<tr>
                   <td width='10%'>{e.title}</td>
                   <td width='70%'><Link to={"/blog/post="+e.id}>{e.content}</Link></td>
@@ -61,7 +61,7 @@ const Blog = () => {
                   <td width='10%'>{e.author.name}</td>
               </tr>)
           })}
-          {data && data.feed && data.feed[data.feed.length-1].id !== 1 ? 
+          {data.feed && data.feed[data.feed.length-1].id !== 1 ? 
           (<tr>
             <th>end of page</th>
             <td>

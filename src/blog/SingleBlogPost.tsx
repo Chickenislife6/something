@@ -20,7 +20,7 @@ const BlogPost: React.FC = () => {
     const { blogid } = useParams();
     const id = typeof(blogid) === 'string' ? parseInt(blogid) : null
 
-    const {loading, data} = useQuery<postById>(
+    const { data } = useQuery<postById>(
         SingleBlogQuery,
         {variables: {id}}
     )
