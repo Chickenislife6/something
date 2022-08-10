@@ -8,6 +8,8 @@ import { NavigationBar } from './NavigationBar';
 import { Blog } from './blog/blog';
 import { BlogEditor } from './blog/BlogEditor';
 import { BlogPost } from './blog/SingleBlogPost';
+import { ClassChecker } from './school/get_class';
+import { Parent } from './school/parent';
 
 
 const App: React.FC = () => {
@@ -30,6 +32,9 @@ const App: React.FC = () => {
         } />
         <Route path='blog/post=:blogid' element={
           <BlogPost  />
+        } />
+        <Route path='class_checker' element={
+          <Parent />
         } />
         <Route path=':route' element={
           <NotFound />
