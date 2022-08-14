@@ -13,6 +13,7 @@ const Parent = () => {
     const [Password, setPassword] = useState('');
     const [Action, setAction] = useState<string>('select action');
     const [Repeat, setRepeat] = useState<boolean>(false);
+    const [Ip, setIp] = useState("http://54.237.225.11:5000");
     const Resolver = useRef<(value: boolean | PromiseLike<boolean>) => void>((e) => e);
     const FirstPromise = useRef<Promise<boolean>>(new Promise((_,__) => _));
 
@@ -45,10 +46,11 @@ const Parent = () => {
         <h2>the desired course <b>must</b> already be in your cart</h2>
         <h2>format courses like "1423 1235" (without quotations)</h2>
         <h2>only run <b>1</b> instance per account</h2>
-        <h2>Do <b>NOT</b> use connectcarolina while using this software</h2>
-        <h2>if you make a mistake or want to use it again you must refresh because of jank references</h2>
+        <h2>If buggy, try again while logged out of connectcarolina. </h2>
+        <h2>if you make a mistake or want to use it again you must refresh</h2>
         <h2>repeat is currently only supported for class lookup</h2>
         <h2>someone teach me how to center a div</h2>
+        <h2>Instructions: enter details on right, hit increase actions for every action you want, and when ready hit check class</h2>
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -69,9 +71,10 @@ const Parent = () => {
         <input placeholder='11039 1234' value={ClassNums} onChange={(e) => {(setClassNums(e.target.value));}}/>
         <input placeholder='username' value={Username} onChange={(e) => {(setUsername(e.target.value));}}/>
         <input placeholder='password' value={Password} onChange={(e) => {(setPassword(e.target.value));}}/>
+        <input placeholder='setip' value={Ip} onChange={(e) => {(setIp(e.target.value));}}/>
         
         {promises.current.map((arr) => {
-            return <ClassChecker reciever={arr[0]} resolver={arr[2]} username={Username} password={Password} action={Action} classnums={ClassNums} repeat={Repeat}/>
+            return <ClassChecker reciever={arr[0]} resolver={arr[2]} username={Username} password={Password} action={Action} classnums={ClassNums} repeat={Repeat} ip={Ip}/>
         })}
       </form>
     </div>

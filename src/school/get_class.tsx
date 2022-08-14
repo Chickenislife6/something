@@ -12,7 +12,8 @@ interface args {
     password: string,
     classnums: string,
     action: string,
-    repeat: boolean
+    repeat: boolean,
+    ip: string
 }
 
 
@@ -23,6 +24,7 @@ const ClassChecker = (args: args) => {
     let ClassNums = useRef(args.classnums);
     let Action = useRef(args.action);
     let Repeat = useRef(args.repeat);
+    let IP = useRef(args.ip);
     useEffect(() => {
         console.log(args.reciever);
         args.reciever.then(async (_) => {
@@ -31,7 +33,7 @@ const ClassChecker = (args: args) => {
             formData.set('PASSWORD', args.password);
             formData.set('CLASSES', args.classnums);
             while (true) {
-                let text = await (await (fetch("http://127.0.0.1:5000/api/" + args.action, {
+                let text = await (await (fetch(IP.current + "/api/" + args.action, {
                     method: 'POST', mode: 'cors', body: formData,
                     headers: {'Access-Control-Allow-Origin':'*'}
                 }))).text();
