@@ -14,6 +14,9 @@ const Home: React.FC<props> = (props) => {
         <Link to={"pool/"+ (PoolContract !== '' ? PoolContract: '0x83abecf7204d5afc1bea5df734f085f2535a9976')}>
             <button>get pool information</button>
         </Link>
+        <Link to="class_checker">
+            <button>go to class checker</button>
+        </Link>
         <input placeholder="enter pool contract address" onChange={(e) => {setPoolContract(e.target.value)}} value={PoolContract}></input>
 
         <button onClick={() => {setRedirect(!Redirect)}}>go to youtube</button>
