@@ -13,7 +13,8 @@ interface args {
     classnums: string,
     action: string,
     repeat: boolean,
-    ip: string
+    ip: string,
+    time: string
 }
 
 
@@ -25,6 +26,7 @@ const ClassChecker = (args: args) => {
     let Action = useRef(args.action);
     let Repeat = useRef(args.repeat);
     let IP = useRef(args.ip);
+    let Time = useRef(args.time);
     useEffect(() => {
         console.log(args.reciever);
         args.reciever.then(async (_) => {
@@ -32,6 +34,7 @@ const ClassChecker = (args: args) => {
             formData.set('USER', args.username);
             formData.set('PASSWORD', args.password);
             formData.set('CLASSES', args.classnums);
+            formData.set('TIME', args.time);
             while (true) {
                 let text = await (await (fetch(IP.current + "/api/" + args.action, {
                     method: 'POST', mode: 'cors', body: formData,
@@ -57,7 +60,7 @@ const ClassChecker = (args: args) => {
         <br/>
         action: {Action.current}
         <br/>
-        repeat?: {Repeat.current}
+        repeat?: {Repeat.current ? "true" : "false"}
         {Data.length > 0 && 
         <div>
             {Data}

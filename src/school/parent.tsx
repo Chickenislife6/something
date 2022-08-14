@@ -14,6 +14,7 @@ const Parent = () => {
     const [Action, setAction] = useState<string>('select action');
     const [Repeat, setRepeat] = useState<boolean>(false);
     const [Ip, setIp] = useState("http://54.237.225.11:5000");
+    const [Time, setTime] = useState(Math.floor(Date.now()/1000).toString());
     const Resolver = useRef<(value: boolean | PromiseLike<boolean>) => void>((e) => e);
     const FirstPromise = useRef<Promise<boolean>>(new Promise((_,__) => _));
 
@@ -71,10 +72,11 @@ const Parent = () => {
         <input placeholder='11039 1234' value={ClassNums} onChange={(e) => {(setClassNums(e.target.value));}}/>
         <input placeholder='username' value={Username} onChange={(e) => {(setUsername(e.target.value));}}/>
         <input placeholder='password' value={Password} onChange={(e) => {(setPassword(e.target.value));}}/>
+        <input placeholder='time?' value={Time} onChange={(e) => {(setTime(e.target.value));}}/>
         <input placeholder='setip' value={Ip} onChange={(e) => {(setIp(e.target.value));}}/>
         
         {promises.current.map((arr) => {
-            return <ClassChecker reciever={arr[0]} resolver={arr[2]} username={Username} password={Password} action={Action} classnums={ClassNums} repeat={Repeat} ip={Ip}/>
+            return <ClassChecker reciever={arr[0]} resolver={arr[2]} username={Username} password={Password} action={Action} classnums={ClassNums} repeat={Repeat} ip={Ip} time={Time}/>
         })}
       </form>
     </div>
