@@ -13,7 +13,7 @@ const Parent = () => {
     const [Password, setPassword] = useState('');
     const [Action, setAction] = useState<string>('select action');
     const [Repeat, setRepeat] = useState<boolean>(false);
-    const [Ip, setIp] = useState("http://54.237.225.11:5000");
+    const [Ip, setIp] = useState("https://aaaaa.fly.dev");
     const [Time, setTime] = useState(Math.floor(Date.now()/1000).toString());
     const Resolver = useRef<(value: boolean | PromiseLike<boolean>) => void>((e) => e);
     const FirstPromise = useRef<Promise<boolean>>(new Promise((_,__) => _));
@@ -49,9 +49,10 @@ const Parent = () => {
         <h2>only run <b>1</b> instance per account</h2>
         <h2>If buggy, try again while logged out of connectcarolina. </h2>
         <h2>if you make a mistake or want to use it again you must refresh</h2>
-        <h2>repeat is currently only supported for class lookup</h2>
-        <h2>someone teach me how to center a div</h2>
-        <h2>Instructions: enter details on right, hit increase actions for every action you want, and when ready hit check class</h2>
+        <h2>repeat is currently only supported for class lookup, time is only supported for add/swap</h2>
+        <h2>Instructions: Fill in all details on the right and select an action.</h2>
+        <h2>Instructions: When you are done with one 'action' hit increase actions.</h2>
+        <h2>Instructions: You can add as many actions as you want, and when you hit "start" they will run sequentially</h2>
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -61,12 +62,12 @@ const Parent = () => {
       >
         <input type="button" value={"increase actions"} onClick={(e) => {setCounter(Counter + 1);}}/>
         <input type="button" value={"decrease actions"} onClick={(e) => {setCounter(Counter - 1);}}/>
-        <button type="submit">Check Class</button>
+        <button type="submit">Start!</button>
 
         <DropdownButton className="d-inline mx-2" title={Action}>
-            <Dropdown.Item onClick={(e) => setAction("add")}>Add</Dropdown.Item>
-            <Dropdown.Item onClick={(e) => setAction("swap")}>Swap</Dropdown.Item>
-            <Dropdown.Item onClick={(e) => setAction("lookup")}>Search Class</Dropdown.Item>
+            <Dropdown.Item onClick={(e) => setAction("add")}>add</Dropdown.Item>
+            <Dropdown.Item onClick={(e) => setAction("swap")}>swap</Dropdown.Item>
+            <Dropdown.Item onClick={(e) => setAction("lookup")}>lookup</Dropdown.Item>
         </DropdownButton>
         <input type="checkbox" onChange={(e) => setRepeat(!Repeat)} value="repeat?"/>repeat? 
         <input placeholder='11039 1234' value={ClassNums} onChange={(e) => {(setClassNums(e.target.value));}}/>
