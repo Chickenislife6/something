@@ -1,9 +1,6 @@
-import { gql, useMutation } from '@apollo/client';
 import React, { useEffect, useRef, useState } from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { DropdownButton } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { createDraft } from '../schema_resolvers';
 import { ClassChecker } from './get_class';
 
 const Parent = () => {

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
-import { feed } from '../schema_resolvers';
+import { feed } from './schema_resolvers';
 
 const FeedQuery = gql`
 query ($searchString: String, $skip: Int!, $take: Int!, $orderBy: PostOrderByUpdatedAtInput) {

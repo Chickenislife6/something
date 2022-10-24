@@ -1,7 +1,7 @@
 import { gql, useMutation } from '@apollo/client';
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import { createDraft } from '../schema_resolvers';
+import { createDraft } from './schema_resolvers';
 
 interface PostCreateInput {
     title: String,

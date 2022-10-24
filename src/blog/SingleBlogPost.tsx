@@ -1,7 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import { useParams } from "react-router";
-import { postById } from "../schema_resolvers";
+import { postById } from "./schema_resolvers";
 
 const SingleBlogQuery = gql`
 query ($id: Int!) {

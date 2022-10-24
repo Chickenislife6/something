@@ -1,9 +1,4 @@
-import { gql, useMutation } from '@apollo/client';
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from 'react-router-dom';
-import { createDraft } from '../schema_resolvers';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 
 interface args {
     reciever: Promise<boolean>,

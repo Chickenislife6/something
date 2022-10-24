@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './App.css';
+import './app.css';
 import { PriceDisplay } from "./Price"
 import { Home } from './Home';
 import { NotFound } from './NotFound';
@@ -10,9 +10,12 @@ import { BlogEditor } from './blog/BlogEditor';
 import { BlogPost } from './blog/SingleBlogPost';
 import { ClassChecker } from './school/get_class';
 import { Parent } from './school/parent';
+import { TikTak } from './components/Tiktak';
+import { Konami } from './components/Konami';
 
 
 const App: React.FC = () => {
+  const [Knmi, setKnmi] = useState(false);
   return (
   <Router>
     <div>
@@ -40,6 +43,8 @@ const App: React.FC = () => {
           <NotFound />
         } />
       </Routes>
+        <TikTak />
+        {!Knmi ? <Konami party={setKnmi}/> : <div/>}
     </div>
   </Router>
   )}
