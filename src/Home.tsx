@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import React from 'react';
 import { Link } from "react-router-dom";
 import './home.css';
@@ -12,16 +12,17 @@ const Home: React.FC<props> = (props) => {
     const [Redirect, setRedirect] = useState<Boolean>(false);
     const [PoolContract, setPoolContract] = useState('');
 
-
-    const parallax = document.getElementById("parallax");
-    // Parallax Effect for DIV 1
-    // FUNKY
-    if (parallax) {
-        window.addEventListener("scroll", function () {
-            let offset = window.pageYOffset;
-            parallax.style.backgroundPositionY = offset * 0.7 + "px";
-        });
-    }
+    useEffect(() => {
+        const parallax = document.getElementById("parallax");
+        // Parallax Effect for DIV 1
+        // FUNKY
+        if (parallax) {
+            window.addEventListener("scroll", function () {
+                let offset = window.pageYOffset;
+                parallax.style.backgroundPositionY = offset * 0.7 + "px";
+            });
+        }
+    }, []);
 
     return <div>
         <body>
