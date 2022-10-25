@@ -11,6 +11,7 @@ import { BlogPost } from './blog/SingleBlogPost';
 import { Parent } from './school/parent';
 import { TikTak } from './components/Tiktak';
 import { Konami } from './components/Konami';
+import { Login } from './school/login';
 
 
 const App: React.FC = () => {
@@ -39,13 +40,16 @@ const App: React.FC = () => {
           <BlogPost  />
         } />
         <Route path='class_checker' element={
+          <Login />
+        } />
+        <Route path='class_checker/user=:onyen/pw=:password' element={
           <Parent />
         } />
         <Route path=':route' element={
           <NotFound />
         } />
       </Routes>
-      {!Knmi ? <TikTak url="/tak.png"/> : <TikTak url="/ricmort.gif"/>}
+      {!Knmi ? <TikTak url="/tak.png" alt="/tik.png"/> : <TikTak url="/ricmort.gif" alt="/ricmort.gif"/>}
       {!Knmi ? <Konami party={setKnmi}/> : <div/>}
     </div>
   </Router>

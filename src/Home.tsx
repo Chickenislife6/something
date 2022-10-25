@@ -29,13 +29,15 @@ const Home: React.FC<props> = (props) => {
             <div className="parallax-item" id = "parallax">
                 <input placeholder="enter uniswap pool address" onChange={(e) => {setPoolContract(e.target.value)}} value={PoolContract}></input>
                 <Link to={"pool/"+ (PoolContract !== '' ? PoolContract: '0x83abecf7204d5afc1bea5df734f085f2535a9976')}>
-                    <button>get pool information</button>
+                    <button className="button purple">get pool information</button>
                 </Link>
             </div>
             <div className="center parallax-item">
                 <Link to="class_checker">
-                        <button>go to class checker</button>
-                </Link>            </div>
+                        {/* <Raindrops /> */}
+                        <button className="button">go to class checker</button>
+                </Link>            
+            </div>
             <div className="center parallax-item">
             </div>
             <div className="center parallax-item">

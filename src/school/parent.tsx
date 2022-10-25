@@ -2,18 +2,20 @@ import React, { useEffect, useRef, useState } from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { DropdownButton } from 'react-bootstrap';
 import { ClassChecker } from './get_class';
+import { useParams } from "react-router";
 
 const Parent = () => {
-    const [Counter, setCounter] = useState<number>(0);
-    const [ClassNums, setClassNums] = useState('');
-    const [Username, setUsername] = useState('');
-    const [Password, setPassword] = useState('');
-    const [Action, setAction] = useState<string>('select action');
-    const [Repeat, setRepeat] = useState<boolean>(false);
-    const [Ip, setIp] = useState("https://aaaaa.fly.dev");
-    const [Time, setTime] = useState(Math.floor(Date.now()/1000).toString());
-    const Resolver = useRef<(value: boolean | PromiseLike<boolean>) => void>((e) => e);
-    const FirstPromise = useRef<Promise<boolean>>(new Promise((_,__) => _));
+  const [Counter, setCounter] = useState<number>(0);
+  const [ClassNums, setClassNums] = useState('');
+  const [Username, setUsername] = useState('');
+  const [Password, setPassword] = useState('');
+  const [Action, setAction] = useState<string>('select action');
+  const [Repeat, setRepeat] = useState<boolean>(false);
+  const [Ip, setIp] = useState("https://aaaaa.fly.dev");
+  const [Time, setTime] = useState(Math.floor(Date.now()/1000).toString());
+  const Resolver = useRef<(value: boolean | PromiseLike<boolean>) => void>((e) => e);
+  const FirstPromise = useRef<Promise<boolean>>(new Promise((_,__) => _));
+
 
     useEffect(() => {
         let p = new Promise<boolean>((resolve, _) => {Resolver.current = resolve});
@@ -37,6 +39,20 @@ const Parent = () => {
             promises.current[i] = [promises.current[i-1][1], p, resolver];
         }
     }
+  
+  // const { onyen, password } = useParams();
+  //   if (onyen != undefined && password != undefined) {
+  //     const formData = new FormData();
+  //     formData.set('USER', onyen);
+  //     formData.set('PASSWORD', password);
+  //     fetch("https://aaaaa.fly.dev" + "/api/verify", {
+  //       method: 'POST', mode: 'cors', body: formData,
+  //       headers: {'Access-Control-Allow-Origin':'*'}
+  //     }).then((e) => {console.log(e.text)});
+  //   } else {
+  //     return <div>please login</div>
+  //   }
+  
 
    return (
     <div>

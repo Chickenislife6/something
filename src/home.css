@@ -18,10 +18,10 @@
 }
 
 
-body {
+/* body {
   background-image: url('./public/ganyu_wig_tyler.jpg');
   background-size: 50%;
-}
+} */
 
 .flex-grid {
   display: flex;
@@ -79,4 +79,21 @@ body {
   .parallax-item h2 {
     font-size: 1.5rem;
   }
+}
+
+
+.button {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+.purple {
+  background-color: purple;
+  /* color:purple; */
 }
