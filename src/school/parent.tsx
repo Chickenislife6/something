@@ -26,7 +26,7 @@ const Parent = () => {
         let resolver: ((value: boolean | PromiseLike<boolean>) => void) = ((e) => e);
 
         let p = new Promise<boolean>((resolve, _) => {resolver = resolve;})
-        if (promises.current.at(i) != undefined) {
+        if (promises.current.at(i) !== undefined) {
             console.log(i);
             continue
         }

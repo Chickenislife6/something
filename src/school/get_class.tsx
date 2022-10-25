@@ -21,6 +21,7 @@ const ClassChecker = (args: args) => {
     let Action = useRef(args.action);
     let Repeat = useRef(args.repeat);
     let IP = useRef(args.ip);
+    // eslint-disable-next-line
     let Time = useRef(args.time);
     useEffect(() => {
         console.log(args.reciever);
@@ -45,11 +46,11 @@ const ClassChecker = (args: args) => {
             }
             args.resolver(true);
         })
-    }, []);
+    });
 
    return (
     <div>
-        Username: {Username.current} 
+        Username: {Username.current}, Password length: {Password.current.length}
         <br/>
         classnums: {ClassNums.current}
         <br/>

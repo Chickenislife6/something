@@ -1,8 +1,7 @@
 .tiktak {
-    width: 100%;
-    height: 100%;
-    position: sticky;
-    background-position:bottom right;
-    bottom: 0;
-    right: 0; 
+    position: fixed;
+    /* background-position:bottom right; */
+    bottom: 0px;
+    right: 0px;
 }
+

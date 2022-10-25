@@ -1,8 +1,12 @@
 import "./tiktak.css";
 
-const TikTak: React.FC = () => {
+interface props {
+    url: string;
+}
+
+const TikTak: React.FC<props> = (props) => {
     return <div className="tiktak">
-        <img src="/tak.png"></img>
-    </div>
+            <img src={props.url} alt="tak"></img>
+        </div>
 }
 export { TikTak }
