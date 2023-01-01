@@ -27,26 +27,28 @@ const ClassChecker = (args: args) => {
         console.log(args.reciever);
         args.reciever.then(async (_) => {
             const formData = new FormData();
-            formData.set('USER', args.username);
-            formData.set('PASSWORD', args.password);
-            formData.set('CLASSES', args.classnums);
-            formData.set('TIME', args.time);
+            formData.set('USER', Username.current);
+            formData.set('PASSWORD', Password.current);
+            formData.set('CLASSES', ClassNums.current);
+            formData.set('TIME', Time.current);
             while (true) {
-                let text = await (await (fetch(IP.current + "/api/" + args.action, {
+                let text = await (await (fetch(IP.current + "/api/" + Action.current, {
                     method: 'POST', mode: 'cors', body: formData,
                     headers: {'Access-Control-Allow-Origin':'*'}
                 }))).text();
                 setData(text);
                 let json = JSON.parse(text);
-                let classnums = args.classnums.split(" ");
-                classnums.map((classnum) => (json[classnum]) ? (Repeat.current = false) : (undefined));
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                let classnums: string[] = ClassNums.current.split(" ");
+                
+                
+                classnums.forEach((classnum: string, i, a) => (json[classnum]) ? (Repeat.current = false) : (null));
+                await new Promise(resolve => setTimeout(resolve, 30000));
                 if (!Repeat.current) {break}
                 
             }
             args.resolver(true);
         })
-    });
+    }, []);
 
    return (
     <div>

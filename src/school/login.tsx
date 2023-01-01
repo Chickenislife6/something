@@ -1,39 +1,64 @@
 import React, { useEffect, useRef, useState } from "react";
-import Dropdown from 'react-bootstrap/Dropdown';
-import { DropdownButton } from 'react-bootstrap';
-import { ClassChecker } from './get_class';
-import { Link } from "react-router-dom";
+import { Child } from "./child";
+import "./login.css";
 
 const Login = () => {
-    const [Counter, setCounter] = useState<number>(0);
-    const [ClassNums, setClassNums] = useState('');
-    const [Username, setUsername] = useState('');
-    const [Password, setPassword] = useState('');
-    const [Action, setAction] = useState<string>('select action');
-    const [Repeat, setRepeat] = useState<boolean>(false);
-    const [Ip, setIp] = useState("https://aaaaa.fly.dev");
-    const [Time, setTime] = useState(Math.floor(Date.now()/1000).toString());
+  const [Username, setUsername] = useState("");
+  const [Password, setPassword] = useState("");
+  const [Render, setRender] = useState(false);
 
-   return (
-    <div>
-        <h1>Please Login</h1>
-        <form
-            onSubmit={e => {
-            e.preventDefault();
-            console.log("SUBMITTED!");
+  return (
+    <div className="container">
+      {Render ? (
+        <Child username={Username} password={Password} />
+      ) : (
+        <div>
+          <form
+            onSubmit={(e) => {
+              setRender(true);
+              e.preventDefault();
             }}
-        >
-        <Link to={"/class_checker/user="+Username+"/pw="+Password}>
-            {/* <Raindrops /> */}
-            <button className="button">go to class checker</button>
-            <button type="submit">login!</button>
-        </Link>  
-        <input placeholder='username' value={Username} onChange={(e) => {(setUsername(e.target.value));}}/>
-        <input placeholder='password' value={Password} onChange={(e) => {(setPassword(e.target.value));}}/>
-        
-      </form>
+          >
+            <div className="row">
+              <div className="col-25">
+                <label>ONYEN Login</label>
+              </div>
+              <div className="col-75">
+                <input
+                  type="text"
+                  placeholder="username"
+                  value={Username}
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-25">
+                <label>ONYEN Password</label>
+              </div>
+              <div className="col-75">
+                <input
+                  type="text"
+                  placeholder="password"
+                  value={Password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-25">
+                <button className="button">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
 
-export { Login }
+export { Login };
