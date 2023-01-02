@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCart, getClassData } from "./cartHook";
 import "./login.css";
+import { sortObject } from "./util/sortedList";
 
 interface props {
   username: string;
@@ -34,9 +35,9 @@ const Child = (props: props) => {
         ></input>
         <button>Check Subject</button>
       </form>
-      {Object.entries(Response).map(
+      {sortObject({ obj: Response, sort: "COURSENUM" }).map(
         ([key, [name, open, reserved, waitlist]], i) => {
-          if (open === "0/0") {
+          if (open === "0/0" && reserved === "0/0") {
             return;
           }
           return (
