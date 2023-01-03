@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Child } from "./child";
-import "./login.module.css";
+import "./login.css";
 
 const Login = () => {
   const [Username, setUsername] = useState("");

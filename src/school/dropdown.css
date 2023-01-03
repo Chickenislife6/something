@@ -1,4 +1,4 @@
-
+/* 
 .dropbtn {
     user-select:none;
     background-color: #4CAF50;
@@ -20,7 +20,7 @@
     display: inline-block;
     border-radius: .3rem;
   }
-  
+   */
   .dropdown-content {
     display: none;
     position: absolute;
@@ -43,4 +43,4 @@
   
   .dropdown:focus-within .dropdown-content {display: block;}
   
-  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+  /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */

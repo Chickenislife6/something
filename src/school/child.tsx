@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { getCart, getClassData } from "./cartHook";
-import "./login.module.css";
+import "./login.css";
 import "./dropdown.css";
 import { sortObject } from "./util/sortedList";
-import DropDown from "./components/dropdown";
-import { attributes } from "./data/data";
 
 interface props {
   username: string;
@@ -90,20 +88,20 @@ const Child = (props: props) => {
               : "red";
 
           return (
-            <div key={i.toString() + " Class"} className={"row " + style}>
+            <div
+              key={i.toString() + " Class"}
+              className={"row " + style + " dropdown"}
+            >
               <div className="col-10">{key}</div>
-              <div className="col-40">{name}</div>
+              <button className="col-40 dropbtn">{name}</button>
               <div className="col-10">{time}</div>
               <div className="col-10">{prof}</div>
               <div className="col-10">{open}</div>
               <div className="col-10">{reserved}</div>
               <div className="col-10">{waitlist}</div>
-              <div className="dropdown">
-                <button className="dropbtn">Dropdown</button>
-                <div className="dropdown-content">
-                  <a>{desc}</a>
-                  <a>{attr}</a>
-                </div>
+              <div className="dropdown-content">
+                <a>{desc}</a>
+                <a>{attr}</a>
               </div>
             </div>
           );
