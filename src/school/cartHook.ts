@@ -12,6 +12,7 @@ const getCart = async (username: string, password: string, subject: string, attr
             method: "POST",
             mode: "cors",
             body: formData,
+            keepalive: true,
             headers: { "Access-Control-Allow-Origin": "*" },
         });
         return await resp.text();
@@ -20,6 +21,7 @@ const getCart = async (username: string, password: string, subject: string, attr
             method: "POST",
             mode: "cors",
             body: formData,
+            keepalive: true,
             headers: { "Access-Control-Allow-Origin": "*" },
         });
         return await resp.text();
