@@ -28,10 +28,15 @@ const FancyText = () => {
       <div id="text">
         <div id="text">
           <div className="fancytext-line">
-            <p className="fancytext-word" style={{ textAlign: "justify" }}>
-              Tyler
+            <p
+              className="fancytext-word  fancytext-fancy"
+              style={{ textAlign: "justify" }}
+            >
+              {enhance("Tyler", "fancytext-bounce")}
             </p>
-            <p className="fancytext-word">Yang</p>
+            <p className="fancytext-word fancytext-fancy">
+              {enhance("Yang", "fancytext-bounce")}
+            </p>
           </div>
           <div className="fancytext-line">
             <p className="fancytext-word fancytext-fancy">

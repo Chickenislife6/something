@@ -5,11 +5,11 @@
   
   @keyframes float {
     from, to {
-      transform: translateY(-0%);
+      transform: translateX(-0%);
     }
     
     50% {    
-      transform: translateY(-3%);
+      transform: translateX(-3%);
     }
   }
   
@@ -83,6 +83,20 @@
     animation: background-pan 150s linear infinite;
   } */
   
+
+  @keyframes bounce {
+    0%   { transform:  translateX(0); }
+    10%  { transform: translateX(0); }
+    30%  { transform:    translateX(-55px);}
+    50%  { transform:  translateX(0); }
+    58%  { transform:  translateX(-7px); }
+    65%  { transform:  translateX(0);}
+    100% { transform:  translateX(0);}
+}
+.fancytext-fancy:hover > .fancytext-bounce:nth-child(-n+5) {
+  animation: bounce 1s ease infinite;
+}
+  
   .fancytext-fancy:hover > .fancytext-outer.one:nth-child(1) {
     transform: translate(-105%, 0%) rotate(7deg);
   }
@@ -120,7 +134,7 @@
     transform: translate(100%, -32.5%) rotate(7deg);
   }
   .fancytext-fancy:hover > .fancytext-outer.one:nth-child(13) {
-    transform: translate(100%, -28%) rotate(7deg);
+    transform: translate(99%, -25%) rotate(9deg);
   }
   .fancytext-fancy:hover > .fancytext-outer.one:nth-child(14) {
     transform: translate(230%, -21%) rotate(7deg);
@@ -137,13 +151,13 @@
 
 
 
-  .fancytext-fancy:hover > .fancytext-outer.one:nth-child(-n+7) {
+  .fancytext-fancy:hover > .fancytext-outer.one:nth-child(-n+8) {
     color:rgb(239, 83, 80)
   }
-  .fancytext-fancy:hover > .fancytext-outer.one:nth-child(8) {
+  .fancytext-fancy:hover > .fancytext-outer.one:nth-child(10) {
     color:rgb(9, 181, 155)
   }
-  .fancytext-fancy:hover > .fancytext-outer.one:nth-child(n+9) {
+  .fancytext-fancy:hover > .fancytext-outer.one:nth-child(n+11) {
     color:rgb(75, 156, 211)
   }
 
